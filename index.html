@@ -50,6 +50,27 @@
       color: #111;
       margin-top: 1rem;
     }
+
+    .lgbtq-message {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #555;
+    }
+
+    /* Decorative icons container.  Position it fixed so it stays in the
+       corner of the page and doesn’t interfere with the main content. */
+    .decorations {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 2.5rem;
+      user-select: none;
+      pointer-events: none;
+    }
+    .decorations .icon {
+      margin-left: 0.3rem;
+    }
     @media (max-width: 600px) {
       h1 {
         font-size: 1.8rem;
@@ -65,9 +86,15 @@
 </head>
 <body>
   <div class="container">
-    <h1>Time till sofa and bed arrives</h1>
+    <h1>
+      Time till sofa and bed arrives
+      <!-- Add subtle LGBTQ‑friendly emojis in the heading for extra flair -->
+      <span aria-label="rainbow flag" role="img">🏳️‍🌈</span>
+    </h1>
     <p class="tagline">8263‑day countdown started on August 4, 2025</p>
     <p id="countdown">Loading…</p>
+    <!-- Supportive message to celebrate the queer community -->
+    <p class="lgbtq-message">Love is love – celebrate diversity and inclusion!</p>
   </div>
 
   <script>
@@ -108,5 +135,14 @@
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
   </script>
+
+  <!-- Decorative icons: Otter and Poop with no background.  These are
+       Unicode emoji characters, which render as colourful icons with
+       transparent backgrounds on modern systems.  Position them
+       absolutely so they don't interfere with the content. -->
+  <div class="decorations">
+    <span class="icon" aria-label="otter" role="img">🦦</span>
+    <span class="icon" aria-label="poop" role="img">💩</span>
+  </div>
 </body>
 </html>
