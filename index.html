@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Time till sofa and bed arrives – 8263‑Day Countdown</title>
+  <!-- Import Font Awesome for additional icons (otter, poop, etc.) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-pXcYFcCJhl9zW33q04DqzlXTys+2kUQo24cA7fEZpl81nzBFoIY8NnZcOGDGqHOzPY4W6XU1IN0EHCyGkYUPxw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -82,6 +90,26 @@
         font-size: 2rem;
       }
     }
+
+    /* Flag image container styling */
+    .flags {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .flags img {
+      height: 50px;
+      width: auto;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Font‑Awesome icon styling for otter and poop */
+    .decorations i {
+      margin-left: 0.3rem;
+      color: #6a1b9a; /* A deep purple to complement the rainbow theme */
+    }
   </style>
 </head>
 <body>
@@ -92,6 +120,13 @@
       <span aria-label="rainbow flag" role="img">🏳️‍🌈</span>
     </h1>
     <p class="tagline">8263‑day countdown started on August 4, 2025</p>
+    <!-- Inclusive flags representation -->
+    <div class="flags">
+      <!-- Progress Pride flag (CC BY) from Wikimedia Commons; sized down -->
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/LGBTQ+_rainbow_flag_Quasar_%22Progress%22_variant.svg/256px-LGBTQ+_rainbow_flag_Quasar_%22Progress%22_variant.svg.png" alt="Progress Pride flag">
+      <!-- Transgender Pride flag from Wikimedia Commons -->
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Transgender_Pride_flag.svg/256px-Transgender_Pride_flag.svg.png" alt="Transgender Pride flag">
+    </div>
     <p id="countdown">Loading…</p>
     <!-- Supportive message to celebrate the queer community -->
     <p class="lgbtq-message">Love is love – celebrate diversity and inclusion!</p>
@@ -136,13 +171,12 @@
     const interval = setInterval(updateCountdown, 1000);
   </script>
 
-  <!-- Decorative icons: Otter and Poop with no background.  These are
-       Unicode emoji characters, which render as colourful icons with
-       transparent backgrounds on modern systems.  Position them
-       absolutely so they don't interfere with the content. -->
+  <!-- Decorative icons: Otter and Poop rendered via Font Awesome for
+       crisp vectors on any device.  These icons have transparent
+       backgrounds and complement the Pride colour scheme. -->
   <div class="decorations">
-    <span class="icon" aria-label="otter" role="img">🦦</span>
-    <span class="icon" aria-label="poop" role="img">💩</span>
+    <i class="fa-solid fa-otter" aria-hidden="true"></i>
+    <i class="fa-solid fa-poo" aria-hidden="true"></i>
   </div>
 </body>
 </html>
