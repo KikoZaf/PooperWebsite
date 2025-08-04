@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8263‑Day Countdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e6e9f0 0%, #eef1f5 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+    .container {
+      text-align: center;
+      padding: 40px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 2.2rem;
+      color: #4a4e69;
+    }
+    #countdown {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+      color: #22223b;
+    }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      #countdown {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>8263‑Day Countdown</h1>
+    <p id="countdown">Loading…</p>
+  </div>
+
+  <script>
+    /*
+     * Countdown timer for 8263 days from the moment the page loads.
+     * Whenever the page is refreshed, the countdown resets to 8263 days.
+     */
+    const DAYS = 8263;
+    const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
+
+    // The target time is now plus 8263 days
+    const targetTime = Date.now() + DAYS * MILLISECONDS_IN_DAY;
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = targetTime - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = 'The countdown is complete!';
+        clearInterval(countdownInterval);
+        return;
+      }
+
+      const days = Math.floor(diff / MILLISECONDS_IN_DAY);
+      const hours = Math.floor((diff % MILLISECONDS_IN_DAY) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      // Format numbers with leading zeros
+      const formatNumber = (num) => String(num).padStart(2, '0');
+
+      document.getElementById('countdown').textContent =
+        `${days}d ${formatNumber(hours)}h ${formatNumber(minutes)}m ${formatNumber(seconds)}s`;
+    }
+
+    // Update immediately and then every second
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
