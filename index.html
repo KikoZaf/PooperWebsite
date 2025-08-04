@@ -3,11 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>8263‑Day Countdown</title>
+  <title>Time till sofa and bed arrives – 8263‑Day Countdown</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #e6e9f0 0%, #eef1f5 100%);
+      /* Use a Pride‑inspired rainbow gradient for the background.  The colours are
+         taken from a reliable reference on Pride flag color codes【754605987289625†L37-L44】. */
+      background: linear-gradient(90deg,
+        #E40303 0%,   /* red   */
+        #FF8C00 20%, /* orange*/
+        #FFED00 40%, /* yellow*/
+        #008026 60%, /* green */
+        #004CFF 80%, /* indigo*/
+        #732982 100% /* violet*/
+      );
       display: flex;
       justify-content: center;
       align-items: center;
@@ -18,54 +27,70 @@
     .container {
       text-align: center;
       padding: 40px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      max-width: 600px;
+      width: 90%;
     }
     h1 {
-      margin-top: 0;
-      font-size: 2.2rem;
-      color: #4a4e69;
+      margin: 0;
+      font-size: 2.4rem;
+      color: #222;
+    }
+    .tagline {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #444;
     }
     #countdown {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       letter-spacing: 1px;
-      color: #22223b;
+      color: #111;
+      margin-top: 1rem;
     }
     @media (max-width: 600px) {
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
+      }
+      .tagline {
+        font-size: 1rem;
       }
       #countdown {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>8263‑Day Countdown</h1>
+    <h1>Time till sofa and bed arrives</h1>
+    <p class="tagline">8263‑day countdown started on August 4, 2025</p>
     <p id="countdown">Loading…</p>
   </div>
 
   <script>
     /*
-     * Countdown timer for 8263 days from the moment the page loads.
-     * Whenever the page is refreshed, the countdown resets to 8263 days.
+     * Countdown timer for 8263 days from a fixed start date.
+     * The start date is August 4, 2025 (the date this page was created) so
+     * the timer will continue counting down across reloads instead of
+     * resetting each time.  We compute the end date once and then update
+     * the display every second.
      */
     const DAYS = 8263;
     const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
-
-    // The target time is now plus 8263 days
-    const targetTime = Date.now() + DAYS * MILLISECONDS_IN_DAY;
+    // Start date constant in local time
+    const startDate = new Date('2025-08-04T00:00:00');
+    const endTime = startDate.getTime() + DAYS * MILLISECONDS_IN_DAY;
 
     function updateCountdown() {
       const now = Date.now();
-      const diff = targetTime - now;
+      const diff = endTime - now;
 
       if (diff <= 0) {
-        document.getElementById('countdown').textContent = 'The countdown is complete!';
-        clearInterval(countdownInterval);
+        document.getElementById('countdown').textContent = 'The furniture has arrived!';
+        clearInterval(interval);
         return;
       }
 
@@ -74,16 +99,14 @@
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      // Format numbers with leading zeros
-      const formatNumber = (num) => String(num).padStart(2, '0');
-
+      const format = (n) => String(n).padStart(2, '0');
       document.getElementById('countdown').textContent =
-        `${days}d ${formatNumber(hours)}h ${formatNumber(minutes)}m ${formatNumber(seconds)}s`;
+        `${days}d ${format(hours)}h ${format(minutes)}m ${format(seconds)}s`;
     }
 
-    // Update immediately and then every second
+    // Initial call and interval
     updateCountdown();
-    const countdownInterval = setInterval(updateCountdown, 1000);
+    const interval = setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
